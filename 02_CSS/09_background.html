@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    /* box 크기와 배경 이미지 크기를 동일하게 맞춤 */
+    .box1{
+      box-sizing: border-box;
+      width: 192px;
+      height: 128px;
+      background-image: url("../../assets/images/animal10.jpg");
+      background-size: 192px 128px; /*높이 안잡아주면 auto값이 자동 적용된다.*/
+    }
+    .box2{
+      box-sizing: border-box;
+      width: 500px;
+      height: 380px;
+      border:1px solid gray;
+      background-image: url(../../assets/images/attach1.png);
+      background-size: auto;/*이미지 크기를 그대로 사용*/
+      background-repeat:no-repeat;/*반복없음*/
+      
+      /* top/bottom(세로정렬), left/center/right(가로정렬) */
+      background-position: bottom;
+      background-position: left;
+      background-position: right;
+      background-position: top;
+      background-position: center;
+    }
+    
+    /* 가로의 중앙= center  */
+    /* 세로의 중앙=middle  */
+  </style>
+  <div class="box1"> </div>
+  <div class="box2"></div>
+</body>
+</html>
