@@ -54,6 +54,13 @@
       </ul>
     */
     var menu = ['Models', 'Find & Buy', 'Electromobility', 'Services', 'Discover'];
+    var gnb=document.getElementById('box1');
+    var str='<ul class="gnb">';
+    for (let i in menu) {
+      str+='<li><a href="#">'+menu[i]+'</a></li>';
+      }
+     str+='</ul>' 
+    gnb.innerHTML=str;
     
   </script>
 
