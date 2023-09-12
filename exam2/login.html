@@ -224,7 +224,11 @@
   <script>
     
     $('#id').keyup(function(){
-            if(this.value.length<4){
+        
+         if(this.value.length===0){
+            $('#msg_id').text('').removeClass('warning').removeClass('good');
+          }
+         else if(this.value.length<4){
             $('#msg_id').text('아이디는 4글자 이상입니다.').addClass('warning').removeClass('good');;
           }
           else{
@@ -246,6 +250,7 @@
     })
     
     $('#frm_login').submit(function(event){
+      
       if(!$('#msg_id').hasClass('good')){
         alert('아이디를 확인하세요');
         event.preventDefault();
