@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <style>
+     /* CSS 초기화 */
+     body, div {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family:"Malgun Gothic, sans-serif" ;
+      width: 100%;
+    }
+   
+    body{
+      background-color:#F5F6F7 ;
+    }
+    
+    a{
+      text-decoration: none;
+      color: #000000;
+      
+    }
+    
+    .login_input{
+     outline: 2px solid #007700;
+     border: transparent;
+    }
+    
+    .login_input:focus{
+      outline: 2px solid #FF8800;
+      border: transparent;
+    }
+    #login_btn{
+      background-color: #007700;
+    }
+    
+      /* 회원가입 버튼 크기 조정 */
+    .content_btn{
+      background-color:#007777 ;
+      text-align: center;
+      font-weight:100;
+      width: 190px;
+      height: 45px;
+      line-height:45px;
+      color:white;
+      margin: 0 auto;
+      
+      
+    }
+    #login_btn{
+      margin-top: 20px;
+      width: 450px;
+      height: 60px;
+      line-height:60px;
+      color: #F5F6F7;
+      border: none;
+      font-size: 18px;
+      font-weight:900;
+    }
+    #login_btn:hover{
+      cursor: pointer;
+      
+    }
+    
+    
+    /*  가운데 정렬 */
+    #mainWrap{
+      margin: 0 auto;
+      width: 450px;
+    }
+    
+    /* 구디 이미지 위치/크기 조정 */
+    header{
+      margin-top:100px;
+      margin-bottom:40px;
+      text-align: center;
+    }
+    header> a> img{
+      width:165px;
+      opacity:80%;
+      
+    }
+    
+    /* 회원구분 */
+  
+    #member_radio{
+      word-spacing:-7px;
+    }
+    
+    #member_select_wrap > span{
+    font-weight:900;
+    font-size: 13px;
+    
+    }
+    .member_label{
+      font-size:13px ;
+      font-weight:500;
+      padding-right: 5px;
+    }
+    
+    input[type=radio]{
+      width: 10px;
+      margin: 0;
+      vertical-align: -1px;
+      
+    }
+        
+    #id_wrap {
+      margin-top: 5px;
+    }
+    
+    #pw_wrap{
+      margin-top: 8px;
+    }
+
+    #login_wrap input {
+      width: 435px;
+      height: 40px;
+      padding-left: 10px;
+    }
+    #id{
+      font-size: 14px;
+    }
+    #pw{
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
+    .txt1{
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+     
+    }
+    .txt2{
+      text-align: center;
+      line-height:1px;
+      font-size: 10px;
+      letter-spacing: 0px;
+      color: gray;
+    }
+    #content_wrap{
+      text-align: center;
+      display: flex;
+      margin-top: 40px;
+    }
+    .content_box{
+      height: 180px;
+      width: 50%;
+    }
+    
+    .good{
+    padding-top:5px;
+    color: #0000FF;
+    font-size: 14px;
+    line-height:25px;
+  }
+  .warning{
+    padding-top:5px;
+    color:  #FF0000;
+    font-size: 14px;
+    line-height:25px;
+  }
+  
+  </style>
+</head>
+<body>
+  <div id="mainWrap">
+    
+    <header>
+      <a href="https://www.gdu.co.kr/main/main.html"><img src="https://www.gdu.co.kr/images/main/logo.png" alt="구디이미지"></a>
+    </header>
+      
+    <form action="/" method="post" id="frm_login">
+      
+      <!-- 회원구분 -->
+       <div id="member_select_wrap">
+        <span>※ 회원구분을 위해 체크해 주세요</span>
+        <span id="member_radio">
+        <input type="radio" name="member" id="student" value="student">
+        <label for="student" class="member_label">수강생</label>
+        <input type="radio" name="member" id="normal" value="normal">
+        <label for="normal"class="member_label">일반회원</label>
+        </span>
+      </div>
+      
+      <!-- 로그인 정보 입력 -->
+      <div id="login_wrap">
+        <div  id="id_wrap"><input type="text" name="id" id="id"placeholder="아이디" class="login_input"></div>
+        <div id="msg_id"></div>
+        <div  id="pw_wrap"><input type="password" name="pw" id="pw"placeholder="●●●●" class="login_input"></div>
+        <span id="msg_pw"></span>
+      </div>
+      
+      <!-- 로그인 버튼 -->
+      <button id="login_btn">로그인</button>
+      
+      <!--콘텐트 박스-->
+     <div id="content_wrap">
+        
+        <div id="content1" class="content_box">
+          <p class="txt1">아직 회원이 아닌가요?</p>
+          <p class="txt2">가입하면 다양한 서비스 이용이 가능합니다</p>
+          <a href='javascript:void(0)' class="content_btn_href"><div class="content_btn">회원가입</div></a>
+        </div>
+        
+        
+        <div id="content2"class="content_box">
+          <p class="txt1">아이디/비밀번호를 잊으셨나요?</p>
+          <p class="txt2">간단하게 아이디/비밀번호를 찾을 수 있습니다.</p>
+          <a href='javascript:void(0)' class="content_btn_href"><div class="content_btn">아이디/비밀번호 찾기</div></a>
+        </div>
+      
+     </div>
+      
+    </form>
+    
+    
+  </div>
+  
+  <script>
+    
+    $('#id').keyup(function(){
+            if(this.value.length<4){
+            $('#msg_id').text('아이디는 4글자 이상입니다.').addClass('warning').removeClass('good');;
+          }
+          else{
+            $('#msg_id').text('정상적인 아이디입니다.').addClass('good').removeClass('warning');
+          }
+            
+                
+    })
+    
+    $('#pw').keyup(function(){
+            if(this.value.length<1){
+            $('#msg_pw').addClass('warning').removeClass('good');
+          }
+          else{
+            $('#msg_pw').addClass('good').removeClass('warning');
+          }
+            
+                
+    })
+    
+    $('#frm_login').submit(function(event){
+      if(!$('#msg_id').hasClass('good')){
+        alert('아이디를 확인하세요');
+        event.preventDefault();
+        return;
+      }
+      
+      if(!$('#msg_pw').hasClass('good')){
+        alert('비밀번호를 입력하세요');
+        event.preventDefault();
+        return;
+      }
+
+    })
+    
+    
+    
+
+    
+    
+    
+    
+  </script>
+</body>
+</html>
