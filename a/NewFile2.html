@@ -18,17 +18,20 @@
     <input type="button" value="새로고침" id="btn_reset">
     <form action="/servlet/servletex2" method="post">
     <span class="calc"></span>
-    <input id="answer" type="text" size="4">
+    <input name="answer" id="answer" type="text" size="4" autocomplete="off">
     <input id="btn_calc" type="button" value="계산"></input>
   </form>
   </div>
   
   <script>
-   
+    
+    
+    
        //시작하자마자 실행될것
        var num1;
        var num2;
-        window.onload=print();
+
+       window.onload=print();
     
     
     //랜덤 값을 가져오는 함수
@@ -51,11 +54,51 @@
       print();
     });
     
+    // 숫자 비교하는 함수
+    function Compare(){
+    var answer=$('#answer').val();
+     if(answer==num1*num2)return 1;
+     else return 0;
+   
+    }
+    
     // 계산 버튼 
     $('#btn_calc').on('click',function(){
-      var correct=num1*num2;
+      Compare();
     })
+    
+    
+    
+    
+    
+    $('#btn_calc').click(function(){
+      $.ajax({
+        /*요청*/
+        type:'get',
+        url:'/servlet/servletex2',
+        data:$('#frm').serialize(), //form 태그 내부의 모든 입력 요소들을 전부  파라미터로 보냄
+        /*응답*/
+        dataType:'',
+        success:function(resData){
+          
+        },
+        error:function(jqXHR){
+          alert(jqXHR.status+'('+jqXHR.statusText+')');
+        }
+        
+      })
+      
+      
+    })
+    
+  </script>
+  
+  
+  
+  <script>
+   
 
+    
     
     
     
